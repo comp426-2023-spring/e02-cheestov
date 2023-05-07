@@ -12,9 +12,9 @@ const startoverButton = document.getElementById("startover-button");
 // add event listener to the opponent type checkbox
 opponentType.addEventListener("change", function() {
 	if (opponentType.checked) {
-		opponentChoice.style.display = "none";
-	} else {
 		opponentChoice.style.display = "block";
+	} else {
+		opponentChoice.style.display = "none";
 	}
 });
 
