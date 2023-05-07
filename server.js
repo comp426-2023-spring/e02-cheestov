@@ -2,6 +2,7 @@
 // Create require function 
 // https://nodejs.org/docs/latest-v18.x/api/module.html#modulecreaterequirefilename
 import { createRequire } from 'node:module';
+import { rps, rpsls } from "./lib/rpsls.js";
 const require = createRequire(import.meta.url);
 // The above two lines allow us to use ES methods and CJS methods for loading
 // dependencies.
@@ -71,6 +72,61 @@ app.use(morgan(':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:htt
 // Serve static files
 const staticpath = args.stat || args.s || process.env.STATICPATH || path.join(__dirname, 'public')
 app.use('/', express.static(staticpath))
+
+app.use(express.json());
+
+app.get("/app/", (req, res, next) => {
+    res.status(200).json({"message":"200 OK"});
+});
+
+app.get("/app/rps", (req, res, next) => {
+    const response = rps();
+    res.status(200).json({response});
+});
+
+app.get("/app/rpsls/", (req, res, next) => {
+    const response = rpsls();
+    res.status(200).json({response});
+});
+
+app.get("/app/rps/play/", (req, res) => {
+    const response = rps(req.query.shot);
+    res.status(200).send(response);
+});
+
+app.post("/app/rps/play", (req, res) => {
+    const response = rps(req.body.shot);
+    res.status(200).send(response);
+});
+
+app.get('/app/rpsls/play', (req, res) => {
+    const response = rpsls(req.query.shot);
+    res.status(200).send(response);
+});
+
+app.post("/app/rpsls/play", (req, res) => {
+    const response = rpsls(req.body.shot);
+    res.status(200).send(response);
+});
+
+app.get("/app/rps/play/:shot/", (req, res) => {
+    const response = rps(req.params.shot);
+    res.status(200).send(response);
+});
+
+app.get("/app/rpsls/play/:shot/", (req, res) => {
+    const response = rpsls(req.params.shot);
+    res.status(200).send(response);
+});
+
+app.use(function(req, res) {
+    res.status(404).json({"message":"404 NOT FOUND"});
+});
+
+
+
+
+
 // Create app listener
 const server = app.listen(port)
 // Create a log entry on start
@@ -91,6 +147,9 @@ process.on('SIGINT', () => {
     if (args.debug) {
         console.info('\n' + stoppinglog)
     }
+
+
+    
 // Create a log entry on stop
     server.close(() => {
         let stoppedlog = new Date().toISOString() + ' HTTP server stopped\n'

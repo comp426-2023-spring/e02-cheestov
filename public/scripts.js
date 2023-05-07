@@ -5,7 +5,8 @@
 // get references to the elements
 
 // add event listener to the opponent type checkbox
-
+var rps = true;
+var computer = false;
 
 const checkbox = document.getElementById('toggleCheck');
 const head = document.getElementById('header');
