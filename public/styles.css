@@ -26,9 +26,6 @@ h2 {font-size: 0px;}
     position: relative;
 }
 
-#toggle:checked ~ div.opponent-choice {
-    display: none;
-}
 
 
 .option {
@@ -60,6 +57,7 @@ h2 {font-size: 0px;}
 }
 
 .opponent-choice select {
+    display: block;
 	width: 100px;
 	padding: 10px;
 	font-size: 18px;
@@ -68,7 +66,9 @@ h2 {font-size: 0px;}
 	background-color: #fff;
 }
 
-
+.opponent-choice {
+    display: block;
+}
 
 .play {
 	text-align: center;

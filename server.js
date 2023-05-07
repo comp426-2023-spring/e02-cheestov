@@ -114,7 +114,18 @@ app.get("/app/rps/computer/:shot/", (req, res) => {
     res.status(200).send(response);
 });
 
-app.get("/app/rpsls/play/:shot/", (req, res) => {
+app.get("/app/rps/opponent/:shot/:short/", (req, res) => {
+    const response = rps(req.params.shot, req.params.short);
+    res.status(200).send(response);
+});
+
+app.get("/app/rpsls/opponent/:shot/:short/", (req, res) => {
+    const response = rpsls(req.params.shot, req.params.short);
+    res.status(200).send(response);
+});
+
+
+app.get("/app/rpsls/computer/:shot/", (req, res) => {
     const response = rpsls(req.params.shot);
     res.status(200).send(response);
 });

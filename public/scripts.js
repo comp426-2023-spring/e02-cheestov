@@ -10,10 +10,26 @@
 const checkbox = document.getElementById('toggleCheck');
 const head = document.getElementById('header');
 const dropdown = document.getElementById('player-choice');
-const dropdown2=document.getElementById("opponent-choice");
-const result = document.getElementById("result")
+const opponentOption = document.getElementsByClassName('opponent-choice');
+const dropdown2 = document.getElementById("opponent-choice");
+const result = document.getElementById("result");
+const checked = document.getElementById("toggle");
 var rps = true;
 var compPlay = false;
+
+checked.addEventListener("change", () => {
+    if (checked.checked) {
+        compPlay = true;
+        for (var i=0;i<opponentOption.length;i+=1){
+            opponentOption[i].style.display = 'none';
+          }
+    } else {
+        compPlay = false;
+        for (var i=0;i<opponentOption.length;i+=1){
+            opponentOption[i].style.display = 'block';
+          }
+    }
+})
 
 checkbox.addEventListener("change", () => {
    if (checkbox.checked) {
@@ -25,10 +41,16 @@ checkbox.addEventListener("change", () => {
     var spock = document.createElement("option");
     spock.value = "Spock";
     spock.text = "Spock";
+    var lizard2 = document.createElement("option");
+    lizard2.value = "Lizard";
+    lizard2.text = "Lizard";
+    var spock2 = document.createElement("option");
+    spock2.value = "Spock";
+    spock2.text = "Spock";
     dropdown.add(lizard);
     dropdown.add(spock);
-    dropdown2.add(lizard);
-    dropdown2.add(spock);
+    dropdown2.add(lizard2);
+    dropdown2.add(spock2);
    } else {
     rps = true;
     head.textContent = "Rock Paper Scissors Game";
@@ -40,10 +62,30 @@ checkbox.addEventListener("change", () => {
 });
 
 async function myFunction() {
-    var rpsText
-    var compText
-    document.getElementById("result-text").innerText = JSON.stringify(await fetcher());
-    result.style.display = "block";
+    var rpsText;
+    var compText;
+    if (rps) {
+        rpsText = "rps/";
+    } else {
+        rpsText = "rpsls/"
+    }
+    if (compPlay) {
+        compText = "computer/"
+    } else {
+        compText = "opponent/"
+    }
+    if (compPlay) {
+        const response = await fetch("http://localhost:5000/app/" + rpsText + compText + dropdown.options[dropdown.selectedIndex].text.toLowerCase() + "/");
+        const data = await response.json();
+        document.getElementById("result-text").innerText = "player's <" + data.player + "> " + data.result + "s against computer's <" + data.opponent + ">";
+        result.style.display = "block";
+    } else {
+        const response = await fetch("http://localhost:5000/app/" + rpsText + compText + dropdown.options[dropdown.selectedIndex].text.toLowerCase() + "/" + dropdown2.options[dropdown2.selectedIndex].text.toLowerCase() + "/");
+        const data = await response.json()
+        document.getElementById("result-text").innerText = "player's <" + data.player + "> " + data.result + "s against opponent's <" + data.opponent + ">";
+        result.style.display = "block";
+    }
+
 }
 
 function hideFunction() {
@@ -51,7 +93,7 @@ function hideFunction() {
 }
 
 async function fetcher() {
-   const response = await fetch("http://localhost:5000/app/rps/play/");
+   const response = await fetch("http://localhost:5000/app/rps/computer/rock/");
    return await response.json();
 }
   
