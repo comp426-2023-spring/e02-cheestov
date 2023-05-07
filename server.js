@@ -104,12 +104,12 @@ app.get('/app/rpsls/play', (req, res) => {
     res.status(200).send(response);
 });
 
-app.post("/app/rpsls/play", (req, res) => {
+app.post("/app/rpsls/play/", (req, res) => {
     const response = rpsls(req.body.shot);
     res.status(200).send(response);
 });
 
-app.get("/app/rps/play/:shot/", (req, res) => {
+app.get("/app/rps/computer/:shot/", (req, res) => {
     const response = rps(req.params.shot);
     res.status(200).send(response);
 });
