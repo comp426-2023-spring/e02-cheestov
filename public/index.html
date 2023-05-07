@@ -1,45 +1,46 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Rock</title>
-        <!-- Link to your script file(s) and CSS in here somewhere -->
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-
-    <!-- Your interface markup goes here -->
-    <!-- For interface examples, look in the `/examples/` directory in the root of your starter code repo. -->
-    <div class="container">
-		<h1>Rock Paper Scissors Game</h1>
-		<div class="options">
-			<div class="option">
-				<label for="player-choice">Player:</label>
-				<select id="player-choice">
-					<option value="rock">Rock</option>
-					<option value="paper">Paper</option>
-					<option value="scissors">Scissors</option>
-				</select>
-			</div>
-			<div class="option">
-				<label for="opponent-choice">Opponent:</label>
-				<select id="opponent-choice">
-					<option value="rock">Rock</option>
-					<option value="paper">Paper</option>
-					<option value="scissors">Scissors</option>
-				</select>
-			</div>
-			<div class="option">
-				<label for="opponent-type">Play Against:</label>
-				<input type="checkbox" id="opponent-type" name="opponent-type" value="computer">Computer
-			</div>
-		</div>
-		<div class="play">
-			<button id="play-button">Play!</button>
-		</div>
-		<div class="result">
-			<p id="result-text"></p>
-			<button id="startover-button">Play Again</button>
-		</div>
-	</div>
+<head>
+	<title>Rock Paper Scissors Game</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="script.js"></script>
-    </body>
+</head>
+<body>  
+    <div class="container">
+        <input type="checkbox" id="toggleCheck"/>
+        <label for="toggleCheck">RPS or RPSLS?</label>    
+        <h1 id="header">Rock Paper Scissors Game</h1>
+        <div class="options">
+            <div class="player-choice">
+                <label for="player-choice">Player:</label>
+                <select id="player-choice">
+                    <option value="rock">Rock</option>
+                    <option value="paper">Paper</option>
+                    <option value="scissors">Scissors</option>
+                </select>
+            </div>
+            <div class="option">
+                <div class="opponent-type">
+                    <label for="toggle" class="opponent-toggle">Computer or Human?</label>
+                </div>
+                <input type="checkbox" id="toggle" />
+                <div class="opponent-choice">
+                    <label for="opponent-choice">Opponent:</label>
+                    <select id="opponent-choice">
+                        <option value="rock">Rock</option>
+                        <option value="paper">Paper</option>
+                        <option value="scissors">Scissors</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="play">
+            <button id="play-button">Play!</button>
+        </div>
+        <div class="result">
+            <p id="result-text"></p>
+            <button id="startover-button">Play Again</button>
+        </div>
+    </div>
+</body>
 </html>

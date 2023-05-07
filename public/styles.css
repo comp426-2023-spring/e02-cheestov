@@ -6,6 +6,7 @@ body {
 .container {
 	margin: 0 auto;
 	max-width: 800px;
+    height: 270px;
 	padding: 20px;
 	background-color: #fff;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -19,26 +20,53 @@ h1 {
 .options {
 	display: flex;
 	margin-bottom: 20px;
+    margin-top: 0;
+    position: relative;
 }
+
+#toggle:checked ~ div.opponent-choice {
+    display: none;
+}
+
 
 .option {
+    position: absolute;
 	flex: 1;
 	margin-right: 20px;
+    top: 100px;
 }
-
-.option label {
-	display: block;
+.player-choice label {
+    top: 75px;
+    display: block;
 	margin-bottom: 5px;
 }
 
-.option select {
-	width: 100%;
+.player-choice select {
+    top: 100px;
+    width: 100px;
 	padding: 10px;
 	font-size: 18px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	background-color: #fff;
 }
+
+.opponent-choice label {
+    width: 50px;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.opponent-choice select {
+	width: 100px;
+	padding: 10px;
+	font-size: 18px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+
 
 .play {
 	text-align: center;
@@ -75,6 +103,4 @@ h1 {
 	cursor: pointer;
 }
 
-.opponent_choice {
-    display: none;
-}
+

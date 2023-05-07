@@ -2,6 +2,7 @@
 // check out the coin-server example from a previous COMP 426 semester.
 // https://github.com/jdmar3/coinserver
 // get references to the elements
+// get references to the elements
 const playerChoice = document.getElementById("player-choice");
 const opponentChoice = document.getElementById("opponent-choice");
 const opponentType = document.getElementById("opponent-type");
@@ -12,9 +13,9 @@ const startoverButton = document.getElementById("startover-button");
 // add event listener to the opponent type checkbox
 opponentType.addEventListener("change", function() {
 	if (opponentType.checked) {
-		opponentChoice.style.display = "block";
-	} else {
 		opponentChoice.style.display = "none";
+	} else {
+		opponentChoice.style.display = "block";
 	}
 });
 
@@ -62,3 +63,16 @@ startoverButton.addEventListener("click", function() {
 	opponentChoice.style.display = "block";
 	resultText.innerHTML = "";
 });
+
+const checkbox = document.getElementById("toggleCheck");
+const head = document.getElementById("header");
+
+checkbox.addEventListener("change", () => {
+
+    if (checkbox.checked) {
+        head.textContent = "Rock Paper Scissors Lizard Spock Game!";
+    } else {
+        head.textContent = "Rock Paper Scissors Game!"
+    }
+})
+  
