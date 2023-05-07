@@ -75,12 +75,12 @@ async function myFunction() {
         compText = "opponent/"
     }
     if (compPlay) {
-        const response = await fetch("http://localhost:5000/app/" + rpsText + compText + dropdown.options[dropdown.selectedIndex].text.toLowerCase() + "/");
+        const response = await fetch("/app/" + rpsText + compText + dropdown.options[dropdown.selectedIndex].text.toLowerCase() + "/");
         const data = await response.json();
         document.getElementById("result-text").innerText = "player's <" + data.player + "> " + data.result + "s against computer's <" + data.opponent + ">";
         result.style.display = "block";
     } else {
-        const response = await fetch("http://localhost:5000/app/" + rpsText + compText + dropdown.options[dropdown.selectedIndex].text.toLowerCase() + "/" + dropdown2.options[dropdown2.selectedIndex].text.toLowerCase() + "/");
+        const response = await fetch("/app/" + rpsText + compText + dropdown.options[dropdown.selectedIndex].text.toLowerCase() + "/" + dropdown2.options[dropdown2.selectedIndex].text.toLowerCase() + "/");
         const data = await response.json()
         document.getElementById("result-text").innerText = "player's <" + data.player + "> " + data.result + "s against opponent's <" + data.opponent + ">";
         result.style.display = "block";
