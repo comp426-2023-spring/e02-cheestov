@@ -11,6 +11,7 @@ const checkbox = document.getElementById('toggleCheck');
 const head = document.getElementById('header');
 const dropdown = document.getElementById('player-choice');
 const dropdown2=document.getElementById("opponent-choice");
+const result = document.getElementById("result")
 
 checkbox.addEventListener("change", () => {
    if (checkbox.checked) {
@@ -33,4 +34,12 @@ checkbox.addEventListener("change", () => {
     dropdown2.remove(3);
    }
 });
+
+function myFunction() {
+    result.style.display = "block";
+}
+
+function hideFunction() {
+    result.style.display = "none";
+}
   
