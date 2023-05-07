@@ -5,6 +5,8 @@
 // get references to the elements
 
 // add event listener to the opponent type checkbox
+import fetch from 'node-fetch';
+
 var rps = true;
 var computer = false;
 
@@ -16,6 +18,7 @@ const result = document.getElementById("result")
 
 checkbox.addEventListener("change", () => {
    if (checkbox.checked) {
+    rps = false;
     head.textContent = "Rock Paper Scissor Lizard Spock Game";
     var lizard = document.createElement("option");
     lizard.value = "Lizard";
@@ -28,6 +31,7 @@ checkbox.addEventListener("change", () => {
     dropdown2.add(lizard);
     dropdown2.add(spock);
    } else {
+    rps = true;
     head.textContent = "Rock Paper Scissors Game";
     dropdown.remove(3);
     dropdown.remove(3);
@@ -37,6 +41,18 @@ checkbox.addEventListener("change", () => {
 });
 
 function myFunction() {
+    var rpsText;
+    var computerText;
+    if (rps) {
+        rpsText = "rps";
+    } else {
+        rpsText = "rpsls";
+    }
+    if (dropdown2.style.display=="none") {
+        computerText = "computer/";
+    } else {
+        computerText = "opponent/";
+    }
     result.style.display = "block";
 }
 
